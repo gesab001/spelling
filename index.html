@@ -15,9 +15,12 @@
 <h1>Spelling</h1>
 
 <button onclick="getNewWord()">New Word</button>
+<button onclick="repeatNewWord()">Repeat</button>
+
 <button onclick="showAnswer()">Show Answer</button>
+<button onclick="hideAnswer()">Hide Answer</button>
  
-<h1 id="answer"></h1> 
+<div id="answer"></div> 
  
 </body>
 
@@ -28,14 +31,41 @@ function getNewWord(){
   fetchWords("wordList.json");
 }
 
+function repeatNewWord(){
+  var word = document.getElementById("answer").innerHTML;
+  sayTheWord(1, word);
+}
+
+function createAddElement(text){
+  var parentEl = document.getElementById("answer");
+  var childEl = document.createElement("SPAN");
+  childEl.className = "letter";
+  childEl.innerHTML = text;
+  parentEl.appendChild(childEl);
+  
+}
+
+function hideAnswer(){
+  document.getElementById("answer").style.display = "none";
+
+}
+
 function showAnswer(){
   document.getElementById("answer").style.display = "block";
   var word = document.getElementById("answer").innerHTML;
+  //document.getElementById("answer").innerHTML = "";
   var letters = word.split("");
+  //for (var x=0; x<letters.length; x++){
+ //   var text = letters[x];
+ //   createAddElement(text);
+ // }
+//  var letterElements = document.querySelectorAll(".letter");
   var aLetter;
+ // var letterEl;
   var count = 0;
   var myInterval = setInterval(function () {
      aLetter = letters[count];
+	 //letterEl = letterElements[count];
      sayTheWord(0.6, aLetter);
 	 count = count + 1;
 	 if (count>letters.length-1){
