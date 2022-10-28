@@ -3,12 +3,13 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-function sayTheWord(word){
+function sayTheWord(rate, word){
 	  // Check if Speech Synthesis supported
   console.log("sayTheWord: " + word);
   if ("speechSynthesis" in window) {
     const msg = new SpeechSynthesisUtterance();
-    msg.text = "Spell " + word;
+    msg.text = word;
+	msg.rate = rate;
     window.speechSynthesis.speak(msg);
   } else {
     // Speech Synthesis Not Supported
@@ -26,7 +27,8 @@ function loadWords(data){
 	document.getElementById("answer").style.display = "none";
     document.getElementById("answer").innerHTML = word;
 
-	sayTheWord(word);
+	sayTheWord(1, "Spell " + word);
+
 	
 }
 

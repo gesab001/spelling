@@ -30,6 +30,23 @@ function getNewWord(){
 
 function showAnswer(){
   document.getElementById("answer").style.display = "block";
+  var word = document.getElementById("answer").innerHTML;
+  var letters = word.split("");
+  var aLetter;
+  var count = 0;
+  var myInterval = setInterval(function () {
+     aLetter = letters[count];
+     sayTheWord(0.6, aLetter);
+	 count = count + 1;
+	 if (count>letters.length-1){
+	   stopSpelling();
+	 }
+  }, 1000);
+  
+  function stopSpelling(){
+    clearInterval(myInterval);
+  }
+
 }
 </script>
 
