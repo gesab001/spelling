@@ -35,7 +35,8 @@ function sayTheAnswer(rate, word, letterEl){
 function loadWords(data){
 	var containerList = document.getElementById("wordtoGuess");
 	var max = data["items"].length;
-	
+	document.getElementById("totalWords").innerHTML = "Total words: " + max;
+	console.log(document.getElementById("totalWords").innerHTML);
 	var randomNumber = getRandomInt(max);
 	console.log("max: " + max);
 	var word = data["items"][randomNumber];
