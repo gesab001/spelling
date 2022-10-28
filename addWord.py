@@ -1,4 +1,5 @@
 import json
+import subprocess
 
 def add(word):
   f = open("wordList.json", "r")
@@ -8,6 +9,8 @@ def add(word):
     jsondata["items"].append(word)
     with open("wordList.json", "w") as outfile:
       json.dump(jsondata, outfile, indent=4, sort_keys=True )
+    command = "py pushtogit.py"
+    subprocess.call(command, shell=True)
 
 
 while True:
