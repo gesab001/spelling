@@ -1,0 +1,36 @@
+
+<html>
+
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Ensures optimal rendering on mobile devices. -->
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Optimal Internet Explorer compatibility -->
+ <link rel="stylesheet" href="style.css">
+ <script src="app.js" charset="UTF-8"></script>
+
+</head>
+
+ 
+ <body >
+
+<h1>Spelling</h1>
+
+<button onclick="getNewWord()">New Word</button>
+<button onclick="showAnswer()">Show Answer</button>
+ 
+<h1 id="answer"></h1> 
+ 
+</body>
+
+<script>
+
+
+function getNewWord(){
+  fetchWords("wordList.json");
+}
+
+function showAnswer(){
+  document.getElementById("answer").style.display = "block";
+}
+</script>
+
+</html>
